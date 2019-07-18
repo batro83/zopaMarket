@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.zopa.market.beans.ZopaMarket;
 import com.zopa.market.service.ParserMarketService;
+import com.zopa.market.service.QuoteService;
 
 public class Program {
 
@@ -17,9 +18,11 @@ public class Program {
 		System.out.println("Request amount: "+ args[1]);
 				
 		ParserMarketService parserMarketService = new ParserMarketService();
+		QuoteService quoteService = new QuoteService();
 		try {
-			List<ZopaMarket> marketList = parserMarketService.parser(args[1]);
-			System.out.println(marketList.toString());
+			List<ZopaMarket> marketList = parserMarketService.parser(args[0]);
+			quoteService.findQuote(marketList, Double.parseDouble(args[1]));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

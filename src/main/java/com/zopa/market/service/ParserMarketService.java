@@ -18,13 +18,14 @@ public class ParserMarketService {
 		List<ZopaMarket> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(pathMarket))) {
 		    String line;
+		    br.readLine();
 		    while ((line = br.readLine()) != null) {
-		        String[] values = line.split(";");
+		        String[] values = line.split(",");
 		        records.add(new ZopaMarket(values[0], Double.valueOf(values[1]), Double.valueOf(values[2])));
 		    }
 		}
 		
-		return null;		
+		return records;		
 	}
 	
 
