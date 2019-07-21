@@ -37,7 +37,7 @@ public class QuoteService {
 
 
 	public void findQuote(List<ZopaMarket> marketList, final double loanAmount){
-		logger.info("Request amount: £{}", formatterNoDecimal.format(loanAmount));
+		logger.info("Request amount: Â£{}", formatterNoDecimal.format(loanAmount));
 		double totalMarket = checkTotalMarketOffers(marketList);
 		
 		if(loanAmount>totalMarket) {
@@ -104,8 +104,8 @@ public class QuoteService {
 	private double calculateMonthlyRepayments(double averageInterestRate, double loanAmount) {				
 		double monthlyRate = averageInterestRate / 12.0;		
 		double monthlyPayment = (loanAmount*monthlyRate) / (1-Math.pow(1+monthlyRate, -Constants.LOANS_MONTH));		
-		logger.info("Monthly repayment: £{}", formatterTwoDecimal.format(monthlyPayment));
-		logger.info("Total repayment: £{}", formatterTwoDecimal.format(monthlyPayment * Constants.LOANS_MONTH));
+		logger.info("Monthly repayment: Â£{}", formatterTwoDecimal.format(monthlyPayment));
+		logger.info("Total repayment: Â£{}", formatterTwoDecimal.format(monthlyPayment * Constants.LOANS_MONTH));
 		return monthlyPayment;
 	}	
 	
