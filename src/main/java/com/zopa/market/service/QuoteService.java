@@ -2,7 +2,6 @@ package com.zopa.market.service;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -43,10 +42,10 @@ public class QuoteService {
 		
 		if(loanAmount>totalMarket) {
 			logger.error("The market does not have enough offers to fulfil the request.");
-		}
-		
-		List<ZopaMarket> lendersList = getLendersFromMarket(marketList, loanAmount);	
-		calculateMonthlyRepayments(calculateAverageInterestRate(lendersList), loanAmount);
+		} else{
+			List<ZopaMarket> lendersList = getLendersFromMarket(marketList, loanAmount);	
+			calculateMonthlyRepayments(calculateAverageInterestRate(lendersList), loanAmount);	
+		}	
 	}
 	
 	
