@@ -1,6 +1,7 @@
 package com.zopa.market.service;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -22,12 +23,22 @@ import com.zopa.market.utils.Constants;
 public class QuoteService {
 	
 	private static final Logger logger = LogManager.getLogger(QuoteService.class);
-	private NumberFormat formatterOneDecimal = new DecimalFormat("#0.0");
-	private NumberFormat formatterTwoDecimal = new DecimalFormat("#0.00");
-
+	private DecimalFormat formatterNoDecimal;
+	private DecimalFormat formatterOneDecimal;
+	private DecimalFormat formatterTwoDecimal;	
 	
+	
+	public QuoteService() {
+		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
+		otherSymbols.setDecimalSeparator('.');		
+		formatterNoDecimal = new DecimalFormat("#", otherSymbols);
+		formatterOneDecimal = new DecimalFormat("####,####.0", otherSymbols);
+		formatterTwoDecimal = new DecimalFormat("####,####.##", otherSymbols);
+	}
+
+
 	public void findQuote(List<ZopaMarket> marketList, final double loanAmount){
-		logger.info("Request amount: £{}", loanAmount);
+		logger.info("Request amount: £{}", formatterNoDecimal.format(loanAmount));
 		double totalMarket = checkTotalMarketOffers(marketList);
 		
 		if(loanAmount>totalMarket) {
