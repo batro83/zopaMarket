@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import com.zopa.market.beans.ZopaMarket;
 import com.zopa.market.service.ParserMarketService;
 import com.zopa.market.service.QuoteService;
+import com.zopa.market.service.impl.ParserMarketServiceImpl;
+import com.zopa.market.service.impl.QuoteServiceImpl;
 import com.zopa.market.utils.Constants;
 
 public class Program {
@@ -26,11 +28,12 @@ public class Program {
 		if(loanAmount % Constants.LOAN_INCREMENT != 0 || 
 				loanAmount<Constants.MIN_LOAN_AMOUNT || 
 				loanAmount>Constants.MAX_LOAN_AMOUNT) {
-			logger.error("A quote may be requested in any £100 increment between £{} and £{} inclusive", Constants.MIN_LOAN_AMOUNT, Constants.MAX_LOAN_AMOUNT);
+			logger.error("A quote may be requested in any Â£100 increment between Â£{} and Â£{} inclusive", Constants.MIN_LOAN_AMOUNT, Constants.MAX_LOAN_AMOUNT);
+			return;
 		}
 								
-		ParserMarketService parserMarketService = new ParserMarketService();
-		QuoteService quoteService = new QuoteService();
+		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
+		QuoteService quoteService = new QuoteServiceImpl();
 		try {
 			List<ZopaMarket> marketList = parserMarketService.parser(args[0]);
 			quoteService.findQuote(marketList, Double.parseDouble(args[1]));
