@@ -6,7 +6,7 @@ import com.zopa.market.beans.ResponseQuote;
 import com.zopa.market.beans.ZopaMarket;
 
 /**
- * Calculate quote service
+ * Quote service
  * @author roger
  *
  */

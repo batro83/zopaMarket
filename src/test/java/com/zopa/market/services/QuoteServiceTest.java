@@ -70,7 +70,7 @@ public class QuoteServiceTest extends UnitTestImportFileAbstract{
 	private List<ZopaMarket> getMarketList() throws Exception {
 		File file = getResourceFile("Market/market.csv");		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
-		return parserMarketService.parser(file);
+		return parserMarketService.parserCsvMarket(file);
 	}
 
 }

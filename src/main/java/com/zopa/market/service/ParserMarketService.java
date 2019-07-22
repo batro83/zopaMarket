@@ -12,7 +12,7 @@ import com.zopa.market.beans.ZopaMarket;
  */
 public interface ParserMarketService {
 	
-	public List<ZopaMarket> parser(File pathmarket) throws Exception ;
+	public List<ZopaMarket> parserCsvMarket(File pathmarket) throws Exception ;
 	
 
 }

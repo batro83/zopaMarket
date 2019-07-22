@@ -19,7 +19,7 @@ public class ParserMarketServiceTest extends UnitTestImportFileAbstract{
     public void parserMarketCsvSuccess() throws Exception{  
 		File file = getResourceFile("Market/market.csv");		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
-		List<ZopaMarket> list = parserMarketService.parser(file);		
+		List<ZopaMarket> list = parserMarketService.parserCsvMarket(file);		
 		Assert.assertEquals(7, list.size());	    	
     }
 	
@@ -29,7 +29,7 @@ public class ParserMarketServiceTest extends UnitTestImportFileAbstract{
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
 		List<ZopaMarket> list = null;
 		try {
-			list = parserMarketService.parser(file);
+			list = parserMarketService.parserCsvMarket(file);
 		} catch (Exception e) {
 		}		
 		Assert.assertNull(list);		

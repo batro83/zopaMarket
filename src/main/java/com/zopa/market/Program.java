@@ -12,7 +12,10 @@ public class Program {
 	public static void main(String[] args) {
 
 		if(args.length>2 || args.length<2) {
-			logger.error("2 args are required. 1 Market path 2 loan amount");
+			logger.error("2 args are required.");
+			logger.error("args[0]: Market path");
+			logger.error("args[1]: Loan amount");
+			return;
 		}
 		
 		try {

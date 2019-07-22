@@ -19,7 +19,7 @@ public class ParserMarketServiceImpl implements ParserMarketService {
 	private static final Logger logger = LogManager.getLogger(Process.class);
 
 	@Override
-	public List<ZopaMarket> parser(File pathMarket) throws Exception {
+	public List<ZopaMarket> parserCsvMarket(File pathMarket) throws Exception {
 
 		List<ZopaMarket> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(pathMarket))) {

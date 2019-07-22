@@ -40,7 +40,7 @@ public class Process {
 		}
 								
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
-		List<ZopaMarket> marketList = parserMarketService.parser(pathmarket);
+		List<ZopaMarket> marketList = parserMarketService.parserCsvMarket(pathmarket);
 		
 		return calculateQuote(marketList, loanAmount);
 	}
