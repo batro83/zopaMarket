@@ -1,26 +1,24 @@
 package com.zopa.market.services;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.zopa.market.UnitTestImportFileAbstract;
 import com.zopa.market.beans.ZopaMarket;
 import com.zopa.market.service.ParserMarketService;
 import com.zopa.market.service.impl.ParserMarketServiceImpl;
 
 
-public class ParserMarketServiceTest {
+public class ParserMarketServiceTest extends UnitTestImportFileAbstract{
 
 	
 	
 	@Test
-    public void parserMarketCsvSuccess() throws IOException{  
-		
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("Market/market.csv").getFile());
+    public void parserMarketCsvSuccess() throws Exception{  
+		File file = getResourceFile("Market/market.csv");
 		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
 		List<ZopaMarket> list = parserMarketService.parser(file);
@@ -30,16 +28,17 @@ public class ParserMarketServiceTest {
     }
 	
 	@Test
-    public void parserMarketCsvError() throws IOException{  
-		
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("Market/marketError.csv").getFile());
+    public void parserMarketCsvError(){  
+		File file = getResourceFile("Market/marketError.csv");
 		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
-		List<ZopaMarket> list = parserMarketService.parser(file);
+		List<ZopaMarket> list = null;
+		try {
+			list = parserMarketService.parser(file);
+		} catch (Exception e) {
+		}
 		
-		Assert.assertEquals(0, list.size());
+		Assert.assertNull(list);
 		
-    	
     }
 }

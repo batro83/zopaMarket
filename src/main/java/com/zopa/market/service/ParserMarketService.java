@@ -1,7 +1,6 @@
 package com.zopa.market.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import com.zopa.market.beans.ZopaMarket;
@@ -13,7 +12,7 @@ import com.zopa.market.beans.ZopaMarket;
  */
 public interface ParserMarketService {
 	
-	public List<ZopaMarket> parser(File pathmarket) throws IOException ;
+	public List<ZopaMarket> parser(File pathmarket) throws Exception ;
 	
 
 }

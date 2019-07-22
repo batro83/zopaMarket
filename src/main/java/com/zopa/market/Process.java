@@ -1,7 +1,6 @@
 package com.zopa.market;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
@@ -34,7 +33,7 @@ public class Process {
 	}
 		
 	
-	public ResponseQuote init(File pathmarket, double loanAmount) throws IOException {
+	public ResponseQuote init(File pathmarket, double loanAmount) throws Exception {
 		if(loanAmount % Constants.LOAN_INCREMENT != 0 || loanAmount<Constants.MIN_LOAN_AMOUNT || loanAmount>Constants.MAX_LOAN_AMOUNT) {
 			logger.error("A quote may be requested in any £100 increment between £{} and £{} inclusive", Constants.MIN_LOAN_AMOUNT, Constants.MAX_LOAN_AMOUNT);
 			return null;

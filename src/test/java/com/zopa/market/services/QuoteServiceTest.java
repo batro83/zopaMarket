@@ -1,12 +1,12 @@
 package com.zopa.market.services;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.zopa.market.UnitTestImportFileAbstract;
 import com.zopa.market.beans.ResponseQuote;
 import com.zopa.market.beans.ZopaMarket;
 import com.zopa.market.service.ParserMarketService;
@@ -14,12 +14,11 @@ import com.zopa.market.service.QuoteService;
 import com.zopa.market.service.impl.ParserMarketServiceImpl;
 import com.zopa.market.service.impl.QuoteServiceImpl;
 
-public class QuoteServiceTest {
-	
-	
+public class QuoteServiceTest extends UnitTestImportFileAbstract{
+		
 
 	@Test
-    public void getLendersFromMarketTestSuccess() throws IOException{  		
+    public void getLendersFromMarketTestSuccess() throws Exception{  		
 		QuoteService quoteService = new QuoteServiceImpl();		
 		
 		double loanAmount = 1000d;
@@ -33,11 +32,10 @@ public class QuoteServiceTest {
 		loanAmount = 2000d;
 		list = quoteService.getLendersFromMarket(getMarketList(), loanAmount);		
 		Assert.assertEquals(6, list.size());
-    }
-	
+    }	
 	
 	@Test
-    public void calculateAverageInterestRateTestSuccess() throws IOException{  		
+    public void calculateAverageInterestRateTestSuccess() throws Exception{  		
 		QuoteService quoteService = new QuoteServiceImpl();			
 		double avg = quoteService.calculateAverageInterestRate(getMarketList(), new ResponseQuote());		
 		Assert.assertEquals(0.07785714285714285d, avg, 0);
@@ -45,7 +43,7 @@ public class QuoteServiceTest {
 	
 	
 	@Test
-    public void checkTotalMarketOffersTestSuccess() throws IOException{  		
+    public void checkTotalMarketOffersTestSuccess() throws Exception{  		
 		QuoteService quoteService = new QuoteServiceImpl();			
 		double avg = quoteService.checkTotalMarketOffers(getMarketList());
 		
@@ -53,9 +51,8 @@ public class QuoteServiceTest {
     }
 	
 		
-	private List<ZopaMarket> getMarketList() throws IOException {
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("Market/market.csv").getFile());
+	private List<ZopaMarket> getMarketList() throws Exception {
+		File file = getResourceFile("Market/market.csv");
 		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
 		return parserMarketService.parser(file);

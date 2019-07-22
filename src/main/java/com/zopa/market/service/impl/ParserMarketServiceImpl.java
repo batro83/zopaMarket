@@ -3,7 +3,6 @@ package com.zopa.market.service.impl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class ParserMarketServiceImpl implements ParserMarketService {
 	private static final Logger logger = LogManager.getLogger(Process.class);
 
 	@Override
-	public List<ZopaMarket> parser(File pathMarket) throws IOException {
+	public List<ZopaMarket> parser(File pathMarket) throws Exception {
 
 		List<ZopaMarket> records = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(pathMarket))) {
@@ -31,7 +30,8 @@ public class ParserMarketServiceImpl implements ParserMarketService {
 				records.add(new ZopaMarket(values[0], Double.valueOf(values[1]), Double.valueOf(values[2])));
 			}
 		}catch (Exception e) {
-			logger.error(e.getMessage());
+			logger.error("Error parsing csv market. {}", e.getMessage());
+			throw new Exception();
 		}
 
 		return records;
