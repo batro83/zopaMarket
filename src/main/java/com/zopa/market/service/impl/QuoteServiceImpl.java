@@ -42,13 +42,13 @@ public class QuoteServiceImpl implements QuoteService{
 
 	/**
 	 * Calculate average interest rate from lenders
-	 * @param marketList
+	 * @param lendersList
 	 * @param response 
 	 * @return
 	 */
 	@Override
-	public double calculateAverageInterestRate(List<ZopaMarket> marketList, ResponseQuote response) {
-		OptionalDouble avg = marketList.stream().mapToDouble(ZopaMarket::getRate).average();
+	public double calculateAverageInterestRate(List<ZopaMarket> lendersList, ResponseQuote response) {
+		OptionalDouble avg = lendersList.stream().mapToDouble(ZopaMarket::getRate).average();
 		response.setAnualInterestRate(avg.getAsDouble());
 		return avg.getAsDouble();		
 	}

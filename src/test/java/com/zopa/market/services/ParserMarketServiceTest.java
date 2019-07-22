@@ -15,30 +15,23 @@ import com.zopa.market.service.impl.ParserMarketServiceImpl;
 public class ParserMarketServiceTest extends UnitTestImportFileAbstract{
 
 	
-	
 	@Test
     public void parserMarketCsvSuccess() throws Exception{  
-		File file = getResourceFile("Market/market.csv");
-		
+		File file = getResourceFile("Market/market.csv");		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
-		List<ZopaMarket> list = parserMarketService.parser(file);
-		
-		Assert.assertEquals(7, list.size());	
-    	
+		List<ZopaMarket> list = parserMarketService.parser(file);		
+		Assert.assertEquals(7, list.size());	    	
     }
 	
 	@Test
     public void parserMarketCsvError(){  
-		File file = getResourceFile("Market/marketError.csv");
-		
+		File file = getResourceFile("Market/marketError.csv");		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
 		List<ZopaMarket> list = null;
 		try {
 			list = parserMarketService.parser(file);
 		} catch (Exception e) {
-		}
-		
-		Assert.assertNull(list);
-		
+		}		
+		Assert.assertNull(list);		
     }
 }

@@ -13,7 +13,7 @@ import com.zopa.market.beans.ZopaMarket;
 public interface QuoteService {
 	
 	public List<ZopaMarket> getLendersFromMarket(List<ZopaMarket> marketList, double loanAmount);
-	public double calculateAverageInterestRate(List<ZopaMarket> marketList, ResponseQuote response);
+	public double calculateAverageInterestRate(List<ZopaMarket> lendersList, ResponseQuote response);
 	public double checkTotalMarketOffers(List<ZopaMarket> marketList);
 	public double calculateMonthlyRepayments(double averageInterestRate, double loanAmount, ResponseQuote response);
 	

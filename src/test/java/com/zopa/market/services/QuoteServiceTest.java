@@ -20,7 +20,7 @@ public class QuoteServiceTest extends UnitTestImportFileAbstract{
 
 	@Test
     public void getLendersFromMarketTestSuccess() throws Exception{  		
-		QuoteService quoteService = new QuoteServiceImpl();		
+		QuoteService quoteService = new QuoteServiceImpl();
 		
 		double loanAmount = 1000d;
 		List<ZopaMarket> list = quoteService.getLendersFromMarket(getMarketList(), loanAmount);		
@@ -41,11 +41,11 @@ public class QuoteServiceTest extends UnitTestImportFileAbstract{
 		double avg = quoteService.calculateAverageInterestRate(getMarketList(), new ResponseQuote());		
 		Assert.assertEquals(0.07785714285714285d, avg, 0);
 		
-		List<ZopaMarket> leaderList = new ArrayList<>();
-		leaderList.add(new ZopaMarket("LENDER1", 0.075d, 500d));
-		leaderList.add(new ZopaMarket("LENDER2", 0.076d, 500d));
-		leaderList.add(new ZopaMarket("LENDER3", 0.077d, 500d));				
-		avg = quoteService.calculateAverageInterestRate(leaderList, new ResponseQuote());		
+		List<ZopaMarket> lendersList = new ArrayList<>();
+		lendersList.add(new ZopaMarket("LENDER1", 0.075d, 500d));
+		lendersList.add(new ZopaMarket("LENDER2", 0.076d, 500d));
+		lendersList.add(new ZopaMarket("LENDER3", 0.077d, 500d));				
+		avg = quoteService.calculateAverageInterestRate(lendersList, new ResponseQuote());		
 		Assert.assertEquals(0.076d, avg, 0);
     }
 		
