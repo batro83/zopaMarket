@@ -27,7 +27,7 @@ public class QuoteServiceImpl implements QuoteService{
 		otherSymbols.setDecimalSeparator('.');		
 		formatterNoDecimal = new DecimalFormat("#", otherSymbols);
 		formatterOneDecimal = new DecimalFormat("####,####.0", otherSymbols);
-		formatterTwoDecimal = new DecimalFormat("####,####.##", otherSymbols);
+		formatterTwoDecimal = new DecimalFormat("####,####.00", otherSymbols);
 	}
 
 	@Override
