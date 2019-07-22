@@ -18,7 +18,6 @@ public class Program {
 		try {
 			Process process = new Process();
 			process.init(new File(args[0]), Double.parseDouble(args[1]));
-
 		} catch (Exception e) {
 			logger.error(e.toString());
 		}

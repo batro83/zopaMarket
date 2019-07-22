@@ -17,5 +17,4 @@ public interface QuoteService {
 	public double checkTotalMarketOffers(List<ZopaMarket> marketList);
 	public double calculateMonthlyRepayments(double averageInterestRate, double loanAmount, ResponseQuote response);
 	
-	
 }
