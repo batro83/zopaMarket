@@ -11,7 +11,7 @@ public class ProcessTest extends UnitTestImportFileAbstract{
 
 	
 	@Test
-    public void processTestSuccess() throws Exception{  	
+    public void initTestSuccess() throws Exception{  	
 		File file = getResourceFile("Market/market.csv");
 		
 		Process process = new Process();
@@ -24,13 +24,13 @@ public class ProcessTest extends UnitTestImportFileAbstract{
 		response = process.init(file, 1800d);
 		Assert.assertNotNull(response);
 		
-		response = process.init(file, 2000d);
+		response = process.init(file, 3000d);
 		Assert.assertNotNull(response);
     }
 	
 	
 	@Test
-    public void processTestError() throws Exception{  		
+    public void initTestError() throws Exception{  		
 		File file = getResourceFile("Market/market.csv");
 		
 		Process process = new Process();

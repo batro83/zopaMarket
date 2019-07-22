@@ -46,7 +46,7 @@ public class Process {
 	}
 	
 	
-	public ResponseQuote calculateQuote(List<ZopaMarket> marketList, double loanAmount) {			
+	private ResponseQuote calculateQuote(List<ZopaMarket> marketList, double loanAmount) {			
 		QuoteService quoteService = new QuoteServiceImpl();				
 		ResponseQuote response = new ResponseQuote(loanAmount);
 		double totalMarket = quoteService.checkTotalMarketOffers(marketList);
