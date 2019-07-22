@@ -17,6 +17,15 @@ public class ProcessTest extends UnitTestImportFileAbstract{
 		Process process = new Process();
 		ResponseQuote response = process.init(file, 1500d);
 		Assert.assertNotNull(response);
+		
+		response = process.init(file, 1600d);
+		Assert.assertNotNull(response);
+		
+		response = process.init(file, 1800d);
+		Assert.assertNotNull(response);
+		
+		response = process.init(file, 2000d);
+		Assert.assertNotNull(response);
     }
 	
 	

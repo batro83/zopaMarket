@@ -1,6 +1,7 @@
 package com.zopa.market.services;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -39,21 +40,35 @@ public class QuoteServiceTest extends UnitTestImportFileAbstract{
 		QuoteService quoteService = new QuoteServiceImpl();			
 		double avg = quoteService.calculateAverageInterestRate(getMarketList(), new ResponseQuote());		
 		Assert.assertEquals(0.07785714285714285d, avg, 0);
+		
+		List<ZopaMarket> leaderList = new ArrayList<>();
+		leaderList.add(new ZopaMarket("LENDER1", 0.075d, 500d));
+		leaderList.add(new ZopaMarket("LENDER2", 0.076d, 500d));
+		leaderList.add(new ZopaMarket("LENDER3", 0.077d, 500d));				
+		avg = quoteService.calculateAverageInterestRate(leaderList, new ResponseQuote());		
+		Assert.assertEquals(0.076d, avg, 0);
+    }
+		
+	@Test
+    public void checkTotalMarketOffersTestSuccess() throws Exception{  		
+		QuoteService quoteService = new QuoteServiceImpl();			
+		double avg = quoteService.checkTotalMarketOffers(getMarketList());		
+		Assert.assertEquals(2330d, avg, 0);
     }
 	
 	
 	@Test
-    public void checkTotalMarketOffersTestSuccess() throws Exception{  		
+    public void calculateMonthlyRepaymentsSuccess() throws Exception{  		
 		QuoteService quoteService = new QuoteServiceImpl();			
-		double avg = quoteService.checkTotalMarketOffers(getMarketList());
+		double avg = quoteService.calculateMonthlyRepayments(0.076d, 1000d, new ResponseQuote());		
+		Assert.assertEquals(31.152165582764066d, avg, 0);
 		
-		Assert.assertEquals(2330d, avg, 0);
+		avg = quoteService.calculateMonthlyRepayments(0.076d, 2000d, new ResponseQuote());		
+		Assert.assertEquals(62.30433116552813d, avg, 0);
     }
-	
 		
 	private List<ZopaMarket> getMarketList() throws Exception {
-		File file = getResourceFile("Market/market.csv");
-		
+		File file = getResourceFile("Market/market.csv");		
 		ParserMarketService parserMarketService = new ParserMarketServiceImpl();
 		return parserMarketService.parser(file);
 	}
